@@ -1,0 +1,74 @@
+Task 1: Basic Lead Capture and Scoring
+            Step 1: Create a Lead Capture Form
+            Go to Google Forms and create a form with the fields:
+            
+            Company Size (Dropdown: 1-50, 51-200, 201-1000, 1000+ employees)
+            Annual Budget for SaaS Solutions (Dropdown: < $10k, $10k-$50k, etc.)
+            Industry (Dropdown: Technology, Finance, Healthcare, Retail, Other)
+            Urgency of Need (Dropdown: Immediate, Short-term, Medium-term, Long-term)
+            Comments (Optional for Task 3)
+            Publish the form and ensure responses are linked to a Google Sheets spreadsheet.
+            
+            Step 2: Set Up Zapier Workflow
+            Trigger: New Form Submission
+            
+            Log into Zapier and create a new Zap.
+            Add Google Forms as the trigger app.
+            Select New Response in Spreadsheet as the event.
+            Connect your Google Forms account and select the response sheet.
+            Action 1: Calculate Lead Score
+            
+            Add the Zapier Formatter action.
+            Use a Number field to calculate the lead score:
+            Assign points based on the values in the form (e.g., Company Size, Annual Budget).
+            Action 2: Add Lead to Google Sheets
+            
+            Add Google Sheets as the action.
+            Select Add Row to Spreadsheet.
+            Map the lead details and calculated score to a new row in the sheet.
+            Action 3: Conditional Actions
+            
+            Add Path A (High Score):
+            Condition: Lead score > 70.
+            Action: Send a welcome email using Gmail.
+            Add Path B (Low Score):
+            Condition: Lead score <= 70.
+            Action: Add the lead to a separate Nurturing Campaign Spreadsheet.
+            Deliverable:
+            Take a screenshot of this Zap setup with all steps visible.
+Task 2: Handling Edge Cases
+            Step 1: Handle Incomplete Data
+            Add a Filter action:
+            Use the Zapier Filter app to check for missing or empty fields.
+            If fields like Company Size or Annual Budget are blank:
+            Send an email via Gmail requesting the missing details.
+            Add the lead to a "Pending Information" Google Sheet.
+            Step 2: Ensure High-Value Leads Are Managed
+            Add another Filter action to identify high-value leads:
+            Filter leads with a score > 80.
+            Notify the sales team:
+            Use Gmail to send an email with lead details.
+            Add the lead to a High-Priority Leads Sheet.
+            Step 3: Accommodate Different Time Zones
+            Add Zapier Formatter to parse the timestamp and convert it to the lead’s time zone.
+            Add a conditional step:
+            Schedule follow-up actions in the lead’s time zone.
+Task 3: Scaling and Advanced Implementation
+            Step 1: Lead Distribution
+            Use Zapier Formatter or Google Sheets formulas to:
+            Assign leads evenly to sales reps using a round-robin algorithm.
+            Update the "Assigned Sales Rep" column in the spreadsheet.
+            Step 2: Keyword Extraction
+            Use Zapier Formatter with the Text Extract action:
+            Analyze the Comments field in the form.
+            Extract keywords (e.g., "Budget", "Urgent").
+            Add these keywords to a new column in the Google Sheet for categorization.
+            Step 3: Create Follow-Up System
+            Use Google Calendar:
+            Add an action to create calendar events for follow-ups.
+            Include the lead’s name, score, and follow-up notes in the event description.
+            Schedule events based on urgency:
+            Immediate: Within 1 day.
+            Short-term: Within 3 days.
+            Medium-term: Within 7 days.
+            Long-term: Within 14 days.
